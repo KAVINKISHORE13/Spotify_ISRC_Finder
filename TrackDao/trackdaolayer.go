@@ -45,11 +45,10 @@ func (dao *TrackDAO) GetTracksByArtist(artist string) (*[]model.Track, error) {
 }
 
 func (dao *TrackDAO) UpdateTrack(track *model.Track) error {
-
 	err := dao.DB.Save(track).Error
 	if err != nil {
 		return err
 	}
-
+	
 	return nil
 }

@@ -41,7 +41,7 @@ const docTemplate = `{
                     "200": {
                         "description": "Successfully retrieved tracks",
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     },
                     "500": {
@@ -81,7 +81,7 @@ const docTemplate = `{
                     "200": {
                         "description": "Track details",
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     },
                     "400": {
@@ -126,7 +126,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     }
                 ],
@@ -134,7 +134,7 @@ const docTemplate = `{
                     "200": {
                         "description": "Track updated successfully",
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     },
                     "400": {
@@ -181,7 +181,7 @@ const docTemplate = `{
                     "200": {
                         "description": "Track details",
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     },
                     "400": {
@@ -220,10 +220,10 @@ const docTemplate = `{
                 }
             }
         },
-        "model.TrackDeatils": {
+        "model.TrackDetails": {
             "type": "object",
             "properties": {
-                "artists": {
+                "artist": {
                     "type": "string"
                 },
                 "image": {
@@ -246,7 +246,7 @@ const docTemplate = `{
     },
     "externalDocs": {
         "description": "Documentation for this project can be found on GitHub.",
-        "url": "https://github.com/yourusername/yourproject/docs"
+        "url": "https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/docs"
     }
 }`
 

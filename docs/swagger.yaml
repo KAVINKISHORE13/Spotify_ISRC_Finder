@@ -12,9 +12,9 @@ definitions:
     required:
     - isrc
     type: object
-  model.TrackDeatils:
+  model.TrackDetails:
     properties:
-      artists:
+      artist:
         type: string
       image:
         type: string
@@ -29,7 +29,7 @@ definitions:
     type: object
 externalDocs:
   description: Documentation for this project can be found on GitHub.
-  url: https://github.com/yourusername/yourproject/docs
+  url: https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/docs
 host: localhost:8080
 info:
   contact:
@@ -55,7 +55,7 @@ paths:
         "200":
           description: Track details
           schema:
-            $ref: '#/definitions/model.TrackDeatils'
+            $ref: '#/definitions/model.TrackDetails'
         "400":
           description: Invalid request body
           schema:
@@ -82,7 +82,7 @@ paths:
         "200":
           description: Successfully retrieved tracks
           schema:
-            $ref: '#/definitions/model.TrackDeatils'
+            $ref: '#/definitions/model.TrackDetails'
         "500":
           description: Internal Server Error
           schema:
@@ -108,7 +108,7 @@ paths:
         "200":
           description: Track details
           schema:
-            $ref: '#/definitions/model.TrackDeatils'
+            $ref: '#/definitions/model.TrackDetails'
         "400":
           description: Invalid request body
           schema:
@@ -136,14 +136,14 @@ paths:
         name: existingTrack
         required: true
         schema:
-          $ref: '#/definitions/model.TrackDeatils'
+          $ref: '#/definitions/model.TrackDetails'
       produces:
       - application/json
       responses:
         "200":
           description: Track updated successfully
           schema:
-            $ref: '#/definitions/model.TrackDeatils'
+            $ref: '#/definitions/model.TrackDetails'
         "400":
           description: Bad Request
           schema:

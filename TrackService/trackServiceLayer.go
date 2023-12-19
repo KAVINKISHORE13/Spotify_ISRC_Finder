@@ -35,45 +35,48 @@ func NewSpotifyClient(clientID, clientSecret string) *SpotifyClient {
 		ClientSecret: clientSecret,
 	}
 }
+
 func (s *TrackService) GetSpotifyClient() *SpotifyClient {
 	return s.spotifyClient
 }
 
 
 func (s *TrackService) CreateTrack(isrc string) (*model.Track, error) {
+	// checks for avilable tracks match with isrc
 
-	existingTrack, err := s.trackDAO.GetTrackByISRC(isrc)
-	if err != nil {
-		fmt.Println("error occured")
+	existingTrack, _ := s.trackDAO.GetTrackByISRC(isrc)
+	// if no existing data was found then it searches form Spotify api
+	if existingTrack == nil || existingTrack.ISRC == "" {
+		trackMetadata, err := s.spotifyClient.GetTrackMetadata(isrc)
+		if err != nil {
+			return nil, err
+		}
+
+		// Create a new track object
+		track := &model.Track{
+			ISRC:         isrc,
+			SpotifyImage: trackMetadata.SpotifyImage,
+			Title:        trackMetadata.Title,
+			ArtistNames:  trackMetadata.ArtistNames,
+			Popularity:   trackMetadata.Popularity,
+		}
+
+		// Store the track in the database
+		err = s.trackDAO.CreateTrack(track)
+		if err != nil {
+			return nil, err
+		}
+
+		return track, nil
 	}
 
-	if existingTrack != nil {
-		return nil,errors.New("track already exit")
-	}
-	
-	trackMetadata, err := s.spotifyClient.GetTrackMetadata(isrc)
-	if err != nil {
-		return nil, err
-	}
-
-	track := &model.Track{
-		ISRC:        isrc,
-		SpotifyImage: trackMetadata.SpotifyImage,
-		Title:       trackMetadata.Title,
-		ArtistNames: trackMetadata.ArtistNames,
-		Popularity:  trackMetadata.Popularity,
-	}
-
-	// Store the track in the database
-	err = s.trackDAO.CreateTrack(track)
-	if err != nil {
-		return nil, err
-	}
-
-	return track, nil
+	// If existingTrack is not nil and ISRC is not empty, return an error
+	return nil, fmt.Errorf("track already found")
 }
 
+
 func (sc *SpotifyClient) GetTrackMetadata(isrc string) (*model.Track, error) {
+	// for retriveing datas from spotify api
 	config := &clientcredentials.Config{
 		ClientID:     sc.ClientID,
 		ClientSecret: sc.ClientSecret,
@@ -82,6 +85,7 @@ func (sc *SpotifyClient) GetTrackMetadata(isrc string) (*model.Track, error) {
 
 	token, err := config.Token(context.Background())
 	if err != nil {
+		fmt.Println("Error getting Spotify token:", err)
 		return nil, err
 	}
 
@@ -89,15 +93,16 @@ func (sc *SpotifyClient) GetTrackMetadata(isrc string) (*model.Track, error) {
 
 	result, err := client.Search(fmt.Sprintf("isrc:%s", isrc), spotify.SearchTypeTrack)
 	if err != nil {
+		fmt.Println("Error searching for track on Spotify:", err)
 		return nil, err
 	}
-
-
+	// checks to for results to found on db 
 	if len(result.Tracks.Tracks) == 0 {
+		fmt.Println("Track not found on Spotify")
 		return nil, errors.New("track not found on Spotify")
 	}
 
-
+	// to return the highest popular track
 	highestPopularityTrack := result.Tracks.Tracks[0]
 	for _, track := range result.Tracks.Tracks {
 		if track.Popularity > highestPopularityTrack.Popularity {
@@ -105,7 +110,6 @@ func (sc *SpotifyClient) GetTrackMetadata(isrc string) (*model.Track, error) {
 		}
 	}
 
-	
 	trackMetadata := &model.Track{
 		SpotifyImage: highestPopularityTrack.Album.Images[0].URL,
 		Title:        highestPopularityTrack.Name,
@@ -117,6 +121,7 @@ func (sc *SpotifyClient) GetTrackMetadata(isrc string) (*model.Track, error) {
 }
 
 func getArtistNames(artists []spotify.SimpleArtist) []string {
+
 	var names []string
 	for _, artist := range artists {
 		names = append(names, artist.Name)
@@ -125,6 +130,7 @@ func getArtistNames(artists []spotify.SimpleArtist) []string {
 }
 
 func (s *TrackService) GetTrackByISRC(isrc string) (*model.Track, error) {
+	// for retriveing datas from DB
 	track, err := s.trackDAO.GetTrackByISRC(isrc)
 	if err == nil {
 		return track, nil
@@ -142,7 +148,7 @@ func (s *TrackService) GetTrackByISRC(isrc string) (*model.Track, error) {
 		ArtistNames: trackMetadata.ArtistNames,
 		Popularity:  trackMetadata.Popularity,
 	}
-
+	// creates track on DB
 	err = s.trackDAO.CreateTrack(track)
 	if err != nil {
 		return nil, err
@@ -153,12 +159,15 @@ func (s *TrackService) GetTrackByISRC(isrc string) (*model.Track, error) {
 
 
 func (s *TrackService) GetTracksByArtist(artist string) (*[]model.Track, error) {
-
+	// checks for artists on db
 	tracks, err := s.trackDAO.GetTracksByArtist(artist)
+
 	if err != nil {
 		return nil, err
 	}
-
+	if len(*tracks)==0{
+		return nil, err
+	}
 	return tracks, nil
 }
 	

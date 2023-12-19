@@ -35,7 +35,7 @@
                     "200": {
                         "description": "Successfully retrieved tracks",
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     },
                     "500": {
@@ -75,7 +75,7 @@
                     "200": {
                         "description": "Track details",
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     },
                     "400": {
@@ -120,7 +120,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     }
                 ],
@@ -128,7 +128,7 @@
                     "200": {
                         "description": "Track updated successfully",
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     },
                     "400": {
@@ -175,7 +175,7 @@
                     "200": {
                         "description": "Track details",
                         "schema": {
-                            "$ref": "#/definitions/model.TrackDeatils"
+                            "$ref": "#/definitions/model.TrackDetails"
                         }
                     },
                     "400": {
@@ -214,10 +214,10 @@
                 }
             }
         },
-        "model.TrackDeatils": {
+        "model.TrackDetails": {
             "type": "object",
             "properties": {
-                "artists": {
+                "artist": {
                     "type": "string"
                 },
                 "image": {
@@ -240,6 +240,6 @@
     },
     "externalDocs": {
         "description": "Documentation for this project can be found on GitHub.",
-        "url": "https://github.com/yourusername/yourproject/docs"
+        "url": "https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/docs"
     }
 }
