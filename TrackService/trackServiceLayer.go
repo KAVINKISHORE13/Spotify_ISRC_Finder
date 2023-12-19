@@ -21,11 +21,11 @@ type SpotifyClient struct {
 
 
 type TrackService struct {
-	trackDAO *trackdao.TrackDAL
+	trackDAO *trackdao.TrackDAO
 	spotifyClient *SpotifyClient
 }
 
-func NewtrackService(trackDAO *trackdao.TrackDAL, spotifyClient *SpotifyClient) *TrackService {
+func NewtrackService(trackDAO *trackdao.TrackDAO, spotifyClient *SpotifyClient) *TrackService {
 	return &TrackService{trackDAO: trackDAO, spotifyClient: spotifyClient}
 }
 

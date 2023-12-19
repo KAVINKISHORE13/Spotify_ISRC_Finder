@@ -11,7 +11,7 @@ import (
 
 func SetupRoutes(router *gin.Engine, db *gorm.DB) {
 
-	trackDAO := trackdao.NewTrackDAL(db)
+	trackDAO := trackdao.NewTrackDAO(db)
 	trackService := trackservice.NewtrackService(trackDAO, trackservice.NewSpotifyClient("b65d33b1cb2049719f65fb43f1b74dc1", "7f380918e96f4b1a804ac2b37a542097"))
 	trackHandler := trackhandler.NewTrackHandler(trackService, trackService.GetSpotifyClient())  // Assuming you have a GetSpotifyClient() method in your TrackService
 	
