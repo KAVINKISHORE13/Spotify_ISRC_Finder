@@ -148,7 +148,7 @@ The below is the sample response for tracks stored in database.
 4. **Sample Output**
 Here are the output page for the swagger documentation
 
-![Dashboard](assets/outputs/swagger_documentated_output.png) 
+![Dashboard](./assets/outputs/swagger_documentated_output.png) 
 
 Then create a track by passing "ISRC" code in POST method for storing the track details on PostgreSQL.
 
