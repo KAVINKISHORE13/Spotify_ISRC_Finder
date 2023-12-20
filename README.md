@@ -152,7 +152,7 @@ Here are the output page for the swagger documentation
 
 Then create a track by passing "ISRC" code in POST method for storing the track details on PostgreSQL.
 
-![Post](assets/outputs/post_track.png)
+![Post](./assets/outputs/post_track.png)
 
 To get the track dteails by passing "ISRC" in Get track with ISRC method. This fetches the data from the database if not it fetches from the Spotify API.
 
