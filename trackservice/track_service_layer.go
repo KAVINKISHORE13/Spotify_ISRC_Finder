@@ -43,7 +43,6 @@ func (s *TrackService) GetSpotifyClient() *SpotifyClient {
 
 func (s *TrackService) CreateTrack(isrc string) (*model.Track, error) {
 	// checks for avilable tracks match with isrc
-
 	existingTrack, _ := s.trackDAO.GetTrackByISRC(isrc)
 	// if no existing data was found then it searches form Spotify api
 	if existingTrack == nil || existingTrack.ISRC == "" {

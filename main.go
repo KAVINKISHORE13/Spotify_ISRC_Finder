@@ -22,11 +22,10 @@ import (
 // @externalDocs.description Documentation for this project can be found on GitHub.
 // @host localhost:8080
 // @BasePath /
-
 func main() {
 	
 // DB creation and migration
-	db,err:= gorm.Open(postgres.Open("postgres://postgres:your_db_password@localhost:5432/postgres"), &gorm.Config{});
+	db,err:= gorm.Open(postgres.Open("postgres://postgres:K@vin1309@localhost:5432/postgres"), &gorm.Config{});
 	if err != nil {
 		panic(err)
 	}

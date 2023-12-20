@@ -55,9 +55,6 @@ func (h *TrackHandler) CreateTrackHandler(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-
-	
-
 	c.JSON(http.StatusOK, gin.H{"message": "Track created successfully", "track": track})
 }
 
@@ -93,6 +90,7 @@ func (h *TrackHandler) GetTrackByISRCHandler(c *gin.Context) {
 // @Failure 500 {object} model.ErrorResponse "Internal Server Error"
 // @Router /tracks/artist/{artist} [get]
 func (h *TrackHandler) GetTracksByArtistHandler(c *gin.Context) {
+	
 	artist := c.Param("artist")
 	// checks the db for avilable tracks with this artist
 	tracks, err := h.trackService.GetTracksByArtist(artist)

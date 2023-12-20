@@ -148,29 +148,29 @@ The below is the sample response for tracks stored in database.
 4. **Sample Output**
 Here are the output page for the swagger documentation
 
-![Dashboard](./assessts/Outputs/Swagger_Documentated_Output.png) 
+![Dashboard](./assets/outputs/swagger_documentated_output.png) 
 
 Then create a track by passing "ISRC" code in POST method for storing the track details on PostgreSQL.
 
-![Post](./assessts/Outputs/Post_Track.png)
+![Post](./assets/outputs/post_track.png)
 
 To get the track dteails by passing "ISRC" in Get track with ISRC method. This fetches the data from the database if not it fetches from the Spotify API.
 
-![Get_ISRC](./assessts/Outputs/Get_Track_By_ISRC.png)
+![Get_ISRC](./assets/outputs/get_track_by_isrc.png)
 
 
 To get the track dteails by passing Artist name in Get track with artist method. This fetches the data from the database if not it returns track not found error.
 
-![Get_Artist](./assessts/Outputs/Get_Track_By_Artist.png)
+![Get_Artist](./assets/outputs/get_track_by_artist.png)
 
 To update the track details by passing ISRC in the PUT method. It updated the updated value in database.
 
-![Update_Track](./assessts/Outputs/Update_track.png)
+![Update_Track](./assets/outputs/update_track.png)
 
 These are the structs i have used for this project for Swagger documentation.
 
-![Update_Track](./assessts/Outputs/Models.png)
+![Update_Track](./assets/outputs/models.png)
 
 The tracks stored in the database are shows below
 
-![DB_Tracks](./assessts/Outputs/Database_Outout.png)
+![DB_Tracks](./assets/outputs/database_output.png)
