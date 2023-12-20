@@ -147,21 +147,20 @@ The below is the sample response for tracks stored in database.
 
 4. **Sample Output**
 Here are the output page for the swagger documentation
-
-![Dashboard](./assets/outputs/swagger_documentated_output.png) 
+<img width="1367" alt="swagger_documentated_output" src="https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/assets/78995411/b862229a-4285-4831-be0d-2d74bc5409ac">
 
 Then create a track by passing "ISRC" code in POST method for storing the track details on PostgreSQL.
 
-![Post](./assets/outputs/post_track.png)
+<img width="855" alt="post_track" src="https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/assets/78995411/7b783fa1-b4e5-4f1c-aff8-08b8b1ed2f72">
 
 To get the track dteails by passing "ISRC" in Get track with ISRC method. This fetches the data from the database if not it fetches from the Spotify API.
 
-![Get_ISRC](./assets/outputs/get_track_by_isrc.png)
+<img width="1410" alt="get_track_by_isrc" src="https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/assets/78995411/1eb27c30-eb02-417d-81c2-716b8bc890ac">
 
 
 To get the track dteails by passing Artist name in Get track with artist method. This fetches the data from the database if not it returns track not found error.
 
-![Get_Artist](./assets/outputs/get_track_by_artist.png)
+<img width="1419" alt="get_track_by_artist" src="https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/assets/78995411/edd48e64-6386-4ac3-922a-c66927a3899b">
 
 To update the track details by passing ISRC in the PUT method. It updated the updated value in database.
 
@@ -169,7 +168,7 @@ To update the track details by passing ISRC in the PUT method. It updated the up
 
 These are the structs i have used for this project for Swagger documentation.
 
-![Update_Track](./assets/outputs/models.png)
+<img width="1388" alt="models" src="https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/assets/78995411/9a13f67c-40a7-41fb-b740-cca53cea7ee8">
 
 The tracks stored in the database are shows below
 
