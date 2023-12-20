@@ -173,5 +173,5 @@ These are the structs i have used for this project for Swagger documentation.
 
 The tracks stored in the database are shows below
 
-![DB_Tracks](./assets/outputs/database_output.png)
+<img width="1440" alt="database_output" src="https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/assets/78995411/10d59d77-3e9b-4fdd-b1c6-f26f10fc56f6">
 
