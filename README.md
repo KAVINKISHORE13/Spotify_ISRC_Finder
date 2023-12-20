@@ -164,7 +164,7 @@ To get the track dteails by passing Artist name in Get track with artist method.
 
 To update the track details by passing ISRC in the PUT method. It updated the updated value in database.
 
-![Update_Track](./assets/outputs/update_track.png)
+<img width="886" alt="update_track" src="https://github.com/KAVINKISHORE13/Spotify_ISRC_Finder/assets/78995411/b2322dc7-c64f-41ff-8650-d862b858e91f">
 
 These are the structs i have used for this project for Swagger documentation.
 
